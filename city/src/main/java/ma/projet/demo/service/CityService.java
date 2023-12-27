@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ma.projet.demo.entities.City;
-import ma.projet.demo.repository.CityRepository;
 
 @Service
 public class CityService {

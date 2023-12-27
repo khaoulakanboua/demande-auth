@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ma.projet.demo.entities.City;
-import ma.projet.demo.service.CityService;
-
 @RestController
 @RequestMapping("/api/cities")
 public class CityController {

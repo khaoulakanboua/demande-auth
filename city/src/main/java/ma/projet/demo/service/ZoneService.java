@@ -6,9 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
-import ma.projet.demo.entities.Zone;
-import ma.projet.demo.repository.ZoneRepository;
-
 @Service
 public class ZoneService {
 
