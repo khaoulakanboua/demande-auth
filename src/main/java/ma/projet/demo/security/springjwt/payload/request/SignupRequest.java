@@ -1,6 +1,9 @@
 package ma.projet.demo.security.springjwt.payload.request;
 
+import javax.persistence.Entity;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
@@ -8,6 +11,13 @@ public class SignupRequest {
   @NotBlank
   @Size(min = 3, max = 20)
   private String username;
+
+  @NotBlank
+  @Size(max = 50)
+  @Email
+  private String email;
+
+
   @NotBlank
   @Size(min = 3, max = 20)
   private String firstName;
@@ -16,11 +26,12 @@ public class SignupRequest {
   @Size(min = 3, max = 20)
   private String lastName;
 
+  @NotBlank
+  @Size(min = 3, max = 20)
+  private String phoneNumber;
 
-  /*@NotBlank
-  @Size(max = 50)
-  @Email
-  private String email;*/
+
+
 
   private Set<String> role;
 
@@ -38,13 +49,13 @@ public class SignupRequest {
     this.username = username;
   }
 
-  /*public String getEmail() {
+  public String getEmail() {
     return email;
   }
 
   public void setEmail(String email) {
     this.email = email;
-  }*/
+  }
 
   public String getFirstName() {
     return firstName;
@@ -78,5 +89,11 @@ public class SignupRequest {
     this.role = role;
   }
 
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
 
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
+  }
 }
