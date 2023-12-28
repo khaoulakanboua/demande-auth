@@ -48,7 +48,7 @@ public class DemandeController {
     }
 
     @GetMapping("/findbyuser/{username}")
-    public Demande findByUserUsername(@PathVariable String username) {
+    public List<Demande> findByUserUsername(@PathVariable String username) {
         return demandeService.findByUserUsername(username);
     }
 }

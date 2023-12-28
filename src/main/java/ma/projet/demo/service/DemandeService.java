@@ -32,7 +32,7 @@ public class DemandeService {
         demandeRepository.deleteById(aLong);
     }
 
-    public Demande findByUserUsername(String username) {
+    public List<Demande> findByUserUsername(String username) {
         return demandeRepository.findByUserUsername(username);
     }
 
