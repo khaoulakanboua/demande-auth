@@ -2,6 +2,7 @@ package ma.projet.demo.controller;
 
 
 import ma.projet.demo.entities.Demande;
+import ma.projet.demo.security.springjwt.models.User;
 import ma.projet.demo.service.DemandeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -36,13 +37,18 @@ public class DemandeController {
         demandeService.deleteById(id);
     }
 
-    @PutMapping("reject/{id}")
+    @PutMapping("/reject/{id}")
     public void RejectDemande(@PathVariable Long id) {
         demandeService.rejectDemande(id);
     }
 
-    @PutMapping("accept/{id}")
+    @PutMapping("/accept/{id}")
     public void AcceptDemande(@PathVariable Long id) {
         demandeService.acceptDemande(id);
+    }
+
+    @GetMapping("/findbyuser/{username}")
+    public Demande findByUserUsername(@PathVariable String username) {
+        return demandeService.findByUserUsername(username);
     }
 }

@@ -3,6 +3,7 @@ package ma.projet.demo.service;
 
 import ma.projet.demo.entities.Demande;
 import ma.projet.demo.repository.DemandeRepository;
+import ma.projet.demo.security.springjwt.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,9 @@ public class DemandeService {
         demandeRepository.deleteById(aLong);
     }
 
+    public Demande findByUserUsername(String username) {
+        return demandeRepository.findByUserUsername(username);
+    }
 
     public void rejectDemande(Long demandeId) {
         Optional<Demande> demandeOptional = demandeRepository.findById(demandeId);
