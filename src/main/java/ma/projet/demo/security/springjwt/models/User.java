@@ -1,7 +1,9 @@
 package ma.projet.demo.security.springjwt.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,16 +24,20 @@ public class User {
 
   @NotBlank
   @Size(max = 20)
+  private String phoneNumber;
+
+  @NotBlank
+  @Size(max = 20)
   private String firstName;
 
   @NotBlank
   @Size(max = 20)
   private String lastName;
 
-  /*@NotBlank
+  @NotBlank
   @Size(max = 50)
   @Email
-  private String email;*/
+  private String email;
 
   @NotBlank
   @Size(max = 120)
@@ -46,12 +52,23 @@ public class User {
   public User() {
   }
 
+  public User(String username, String phoneNumber, String firstName, String lastName, String email, String password) {
+    this.username = username;
+    this.phoneNumber = phoneNumber;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.email = email;
+    this.password = password;
+  }
+
   public User(String username, String firstName, String lastName, String password) {
     this.username = username;
     this.firstName = firstName;
     this.lastName = lastName;
     this.password = password;
   }
+
+
   /*public User(String username, String email, String password) {
     this.username = username;
     this.email = email;
@@ -90,13 +107,13 @@ public class User {
     this.lastName = lastName;
   }
 
-  /*public String getEmail() {
+  public String getEmail() {
     return email;
   }
 
   public void setEmail(String email) {
     this.email = email;
-  }*/
+  }
 
   public String getPassword() {
     return password;
@@ -112,5 +129,13 @@ public class User {
 
   public void setRoles(Set<Role> roles) {
     this.roles = roles;
+  }
+
+  public String getPhoneNumber() {
+    return phoneNumber;
+  }
+
+  public void setPhoneNumber(String phoneNumber) {
+    this.phoneNumber = phoneNumber;
   }
 }
