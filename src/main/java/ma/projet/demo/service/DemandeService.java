@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DemandeService {
@@ -29,4 +30,30 @@ public class DemandeService {
     public void deleteById(Long aLong) {
         demandeRepository.deleteById(aLong);
     }
+
+
+    public void rejectDemande(Long demandeId) {
+        Optional<Demande> demandeOptional = demandeRepository.findById(demandeId);
+
+        if (demandeOptional.isPresent()) {
+            Demande demande = demandeOptional.get();
+            demande.setEtat("rejected");
+            demandeRepository.save(demande);
+        } else {
+            System.out.print("Demande non trouvée avec l'ID : " + demandeId);
+        }
+    }
+
+    public void acceptDemande(Long demandeId) {
+        Optional<Demande> demandeOptional = demandeRepository.findById(demandeId);
+
+        if (demandeOptional.isPresent()) {
+            Demande demande = demandeOptional.get();
+            demande.setEtat("accepted");
+            demandeRepository.save(demande);
+        } else {
+            System.out.print("Demande non trouvée avec l'ID : " + demandeId);
+        }
+    }
+
 }

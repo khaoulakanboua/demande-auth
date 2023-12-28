@@ -35,4 +35,14 @@ public class DemandeController {
     public void deleteById(@PathVariable Long id) {
         demandeService.deleteById(id);
     }
+
+    @PutMapping("reject/{id}")
+    public void RejectDemande(@PathVariable Long id) {
+        demandeService.rejectDemande(id);
+    }
+
+    @PutMapping("accept/{id}")
+    public void AcceptDemande(@PathVariable Long id) {
+        demandeService.acceptDemande(id);
+    }
 }
