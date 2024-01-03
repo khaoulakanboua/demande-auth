@@ -31,8 +31,41 @@ public class DemandeController {
     public Demande findById(@PathVariable Long id) {
         return demandeService.findById(id);
     }
+    @PutMapping("/update/{id}")
+    public Demande save(@RequestBody Demande p,@PathVariable long id) {
+        Demande demande = demandeService.findById(id);
+        if (demande != null) {
+            if (p.getTitre() != null) {
+                demande.setTitre(p.getTitre());
 
-    @DeleteMapping("/id/{id}")
+            }
+            if (p.getDescription() != null) {
+                demande.setDescription(p.getDescription());
+            }
+            if(p.getComite() != null) {
+                demande.setComite(p.getComite());
+            }
+            if(p.getEtat() != null) {
+                demande.setEtat(p.getEtat());
+            }
+            if(p.getDate_debut() != null) {
+                demande.setDate_debut(p.getDate_debut());
+            }
+            if(p.getDate_fin() != null) {
+                demande.setDate_fin(p.getDate_fin());
+            }
+            if(p.getType() != null) {
+                demande.setType(p.getType());
+            }
+            if(p.getUser() != null) {
+                demande.setUser(p.getUser());
+            }
+            demandeService.save(demande);
+        }
+        return null;
+    }
+
+    @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable Long id) {
         demandeService.deleteById(id);
     }
