@@ -17,7 +17,7 @@ public class DemandeService {
     DemandeRepository demandeRepository;
 
     public List<Demande> findAll() {
-        return demandeRepository.findAll();
+        return demandeRepository.findAllDesc();
     }
 
     public void save(Demande demande) {
@@ -33,15 +33,16 @@ public class DemandeService {
     }
 
     public List<Demande> findByUserUsername(String username) {
-        return demandeRepository.findByUserUsername(username);
+        return demandeRepository.findByUserUsernameOrderByIdDesc(username);
     }
 
-    public void rejectDemande(Long demandeId) {
+    public void rejectDemande(Long demandeId,String motif) {
         Optional<Demande> demandeOptional = demandeRepository.findById(demandeId);
 
         if (demandeOptional.isPresent()) {
             Demande demande = demandeOptional.get();
             demande.setEtat("rejected");
+            demande.setMotif(motif);
             demandeRepository.save(demande);
         } else {
             System.out.print("Demande non trouvée avec l'ID : " + demandeId);
