@@ -26,6 +26,8 @@ public class Demande {
     private Date date_debut;
     @Temporal(TemporalType.DATE)
     private Date date_fin;
+    private String motif;
+
 
 
     @ManyToOne

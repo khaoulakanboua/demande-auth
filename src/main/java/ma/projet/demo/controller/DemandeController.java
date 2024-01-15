@@ -70,9 +70,9 @@ public class DemandeController {
         demandeService.deleteById(id);
     }
 
-    @PutMapping("/reject/{id}")
-    public void RejectDemande(@PathVariable Long id) {
-        demandeService.rejectDemande(id);
+    @PutMapping("/reject/{id}/{motif}")
+    public void RejectDemande(@PathVariable Long id,@PathVariable String motif) {
+        demandeService.rejectDemande(id,motif);
     }
 
     @PutMapping("/accept/{id}")
